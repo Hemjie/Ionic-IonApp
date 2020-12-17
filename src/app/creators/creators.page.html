@@ -3,16 +3,25 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Créateurs</ion-title>
+    <ion-title>Les créateurs</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-item *ngFor="let creator of listCreators">
-    <ion-thumbnail slot="start">
-      <img [src]="'assets/img/' + creator.img" [alt]="creator.name">
-    </ion-thumbnail>
-    <ion-label>{{creator.name}}</ion-label>
-  </ion-item>
+  <ion-list>
+    <ion-item *ngFor="let creator of listCreators">
+      <ion-thumbnail slot="start">
+        <img [src]="'assets/img/' + creator.img" [alt]="creator.name">
+      </ion-thumbnail>
+      <ion-label>
+       <h2>{{creator.name}}</h2>
+       <p>{{creator.job}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>  
 </ion-content>
-

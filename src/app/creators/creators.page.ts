@@ -9,9 +9,9 @@ export class CreatorsPage implements OnInit {
 
   
   listCreators = [
-    {img: "avatar.png", name: "Marjolaine VILAIN"}, 
-    {img: "lela.jpg", name: "Lela VILAIN"}, 
-    {img: "canelle.jfif", name: "Cannelle POMBOURCQ"} 
+    {img: "avatar.png", name: "Marjolaine VILAIN", job: "Développeuse Full-Stack"}, 
+    {img: "lela.jpg", name: "Lela VILAIN", job: "Directrice générale"}, 
+    {img: "canelle.jfif", name: "Cannelle POMBOURCQ", job: "Cheffe de projet"} 
   ]
 
   constructor() { }
