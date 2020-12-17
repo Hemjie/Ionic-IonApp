@@ -7,6 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreatorsPage implements OnInit {
 
+  
+  listCreators = [
+    {img: "avatar.png", name: "Marjolaine VILAIN"}, 
+    {img: "lela.jpg", name: "Lela VILAIN"}, 
+    {img: "canelle.jfif", name: "Cannelle POMBOURCQ"} 
+  ]
+
   constructor() { }
 
   ngOnInit() {

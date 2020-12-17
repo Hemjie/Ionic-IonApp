@@ -8,22 +8,11 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>
+  <ion-item *ngFor="let creator of listCreators">
     <ion-thumbnail slot="start">
-      <img src="assets/img/avatar.png">
+      <img [src]="'assets/img/' + creator.img" [alt]="creator.name">
     </ion-thumbnail>
-    <ion-label>Marjolaine VILAIN</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-thumbnail slot="start">
-      <img src="assets/img/lela.jpg">
-    </ion-thumbnail>
-    <ion-label>Lela VILAIN</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-thumbnail slot="start">
-      <img src="assets/img/canelle.jfif">
-    </ion-thumbnail>
-    <ion-label>Cannelle POMBOURCQ</ion-label>
+    <ion-label>{{creator.name}}</ion-label>
   </ion-item>
 </ion-content>
+
