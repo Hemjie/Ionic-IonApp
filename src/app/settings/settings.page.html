@@ -45,8 +45,12 @@
       </ion-item>
     </ion-list>
 
-    <div class="ion-padding">
-      <ion-button expand="block" type="submit">Enregistrer</ion-button>
+    <div class="ion-padding ion-text-center">
+      <ion-button expand="block" type="submit" [disabled]="saving">Enregistrer 
+        <ion-spinner name="bubbles" *ngIf="saving" class="ion-margin-start"></ion-spinner>
+      </ion-button>
+
+      <ion-text *ngIf="success" color="success">Vos réglages ont été enregistrés.</ion-text>
     </div>
 
     <!-- Ajouter un bouton permettant de vider le storage du téléphone
@@ -55,9 +59,7 @@
       -->
 
     <div class="ion-padding">
-      <ion-button expand="block" (click)="removeData()" color="danger"
-        >Supprimer les données</ion-button
-      >
+      <ion-button expand="block" (click)="removeData()" color="danger">Supprimer les données</ion-button>
     </div>
   </form>
 </ion-content>

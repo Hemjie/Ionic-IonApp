@@ -14,6 +14,12 @@ export class SettingsPage implements OnInit {
     darkMode: false,
   };
 
+  //Booléen pour savoir si on affiche une icône de chargement
+  saving = false;
+
+  //Booléen quand enregistrement terminé
+  success = false;
+
   constructor(private storage: Storage) { }
 
   //quand on arrive sur la page Settings, on va récupérer les données du téléphone
@@ -36,7 +42,12 @@ export class SettingsPage implements OnInit {
   save() {
     console.log(this.settings);
     //on va utiliser le service storage pout stocker les valeurs dans le téléphone
-    this.storage.set('settings', this.settings).then();
+    this.saving = true; //chargement en cours...
+    this.storage.set('settings', this.settings).then(() => {
+      setTimeout(() => this.saving = false, 2000); //chargement terminé, promesse tenue
+      setTimeout(() => this.success = true, 2000);
+      setTimeout(() => this.success = false, 10000);
+    });
   }
 
   //suppression des données sur le téléphone
