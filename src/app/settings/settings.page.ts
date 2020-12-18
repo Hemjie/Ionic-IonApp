@@ -18,7 +18,12 @@ export class SettingsPage implements OnInit {
 
   //quand on arrive sur la page Settings, on va récupérer les données du téléphone
   ngOnInit() {
-    this.storage.get('settings').then(settings => this.settings = settings);
+    this.storage.get('settings').then(settings => {
+      //on vérifie bien qu'il y a des settings dans le storage
+      if (settings !== null) {
+        this.settings = settings;
+      }
+    } );
   }
 
   // Active ou non le dark mode sur l'application
@@ -34,8 +39,15 @@ export class SettingsPage implements OnInit {
     this.storage.set('settings', this.settings).then();
   }
 
-  delete() {
+  //suppression des données sur le téléphone
+  removeData() {
     this.storage.remove('settings');
+    // on doit faire un reset de l'objet settings
+    this.settings = {
+      username: '',
+      city: '',
+      darkMode: false,
+    }
   }
 
 }
