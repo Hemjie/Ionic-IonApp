@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-list',
@@ -6,17 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.page.scss'],
 })
 export class ListPage implements OnInit {
+  listUsers = [];
 
-  listNames = [
-    {name: "Marjolaine VILAIN"}, 
-    {name: "Steven POMBOURCQ"}, 
-    {name: "Lela VILAIN"}, 
-    {name: "Cannelle POMBOURCQ"}
-  ]
+  constructor(private userService: UserService) { }
 
-  constructor() { }
-
+  //Petit souci à vérifier au niveau du chargement
   ngOnInit() {
+    this.userService.getUsers().then(users => {
+      console.log(users);
+      this.listUsers = users.['results'];
+    });
   }
 
 }

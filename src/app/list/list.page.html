@@ -3,14 +3,16 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>List</ion-title>
+    <ion-title>Ma liste</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let name of listNames">
-      <ion-label>{{name.name}}</ion-label>
+    <ion-item *ngFor="let user of listUsers">
+      <ion-label>
+        <h2>{{user.name.first}} {{user.name.last}}</h2>
+      </ion-label>
     </ion-item>
   </ion-list>
 </ion-content>
