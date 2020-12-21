@@ -10,6 +10,9 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let user of listUsers">
+      <ion-avatar slot="start">
+        <img [src]="user.picture.medium"/>
+      </ion-avatar>
       <ion-label>
         <h2>{{user.name.first}} {{user.name.last}}</h2>
       </ion-label>

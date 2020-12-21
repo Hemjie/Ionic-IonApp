@@ -11,12 +11,16 @@ export class ListPage implements OnInit {
 
   constructor(private userService: UserService) { }
 
-  //Petit souci à vérifier au niveau du chargement
+  //Cette méthode s'exécute au 1er chargement du composant dans l'application
   ngOnInit() {
-    this.userService.getUsers().then(users => {
-      console.log(users);
-      this.listUsers = users.['results'];
-    });
+    console.log("une seule fois au chargement de la page...");
   }
 
+  //cette méthode s'exécute à chaque fois qu'on se rend sur la page
+  ionViewWillEnter() {
+    this.userService.getUsers().then(users => {
+      console.log(users);
+      this.listUsers = users['results'];
+    });
+  }
 }
