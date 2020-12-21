@@ -14,7 +14,9 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   // Permet de récupérer les users sur l'API
-  getUsers() {
-    return this.http.get('https://randomuser.me/api/?results=100').toPromise();
+  getUsers(page: number = 1) {
+    //le seed annule le random
+    //on aura 20 résultats par page
+    return this.http.get('https://randomuser.me/api/?results=20&page='+page+'&seed=m2i').toPromise();
   }
 }

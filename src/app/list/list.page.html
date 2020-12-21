@@ -20,6 +20,12 @@
     </ion-item>
   </ion-list>
 
+  <!-- scroll infini -->
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" *ngIf="listUsers.length > 0">
+    <ion-infinite-scroll-content loadingSpinner="bubbles">      
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
   <!-- Trouver un moyen d'afficher un chargement "skeleton" en vous aidant de la doc Ionic -->
 
   <ion-list *ngIf="listUsers.length === 0">
@@ -37,5 +43,5 @@
       </ion-label>
     </ion-item>
   </ion-list>
-  
+
 </ion-content>
