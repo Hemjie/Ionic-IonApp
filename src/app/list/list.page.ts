@@ -1,0 +1,22 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-list',
+  templateUrl: './list.page.html',
+  styleUrls: ['./list.page.scss'],
+})
+export class ListPage implements OnInit {
+
+  listNames = [
+    {name: "Marjolaine VILAIN"}, 
+    {name: "Steven POMBOURCQ"}, 
+    {name: "Lela VILAIN"}, 
+    {name: "Cannelle POMBOURCQ"}
+  ]
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
