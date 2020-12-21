@@ -9,6 +9,7 @@ import { UserService } from '../services/user.service';
 })
 export class ListPage implements OnInit {
   listUsers = [];
+  skeletons= [0,1,2,3,4,5,6,7,8,9]
 
   constructor(
     private userService: UserService,
@@ -21,9 +22,12 @@ export class ListPage implements OnInit {
 
   //cette méthode s'exécute à chaque fois qu'on se rend sur la page
   ionViewWillEnter() {
+    this.listUsers = []; //on remet la liste à zéro à chaque fois qu'on vient sur la page
+
     this.userService.getUsers().then(users => {
       console.log(users);
-      this.listUsers = users['results'];
+      //le setTimeout permet de tester le skeleton
+      setTimeout(() => this.listUsers = users['results'], 5000);
     });
   }
 
