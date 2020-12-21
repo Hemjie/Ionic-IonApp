@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -9,7 +10,9 @@ import { UserService } from '../services/user.service';
 export class ListPage implements OnInit {
   listUsers = [];
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private router: Router) { }
 
   //Cette méthode s'exécute au 1er chargement du composant dans l'application
   ngOnInit() {
@@ -23,4 +26,14 @@ export class ListPage implements OnInit {
       this.listUsers = users['results'];
     });
   }
+
+  //Permet d'ouvrir une page user
+  openUser(user) {
+
+    //J'ouvre une nouvelle fenêtre sur la route user-detail
+    //en 2eme paramètre, on passe le user dont on veut voir les infos
+
+    this.router.navigate(['/user-detail'], {state: {keyUser: user}});
+  }
+
 }

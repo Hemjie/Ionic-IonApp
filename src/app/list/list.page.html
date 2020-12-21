@@ -9,12 +9,13 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let user of listUsers">
+    <ion-item *ngFor="let user of listUsers" button (click)="openUser(user)">
       <ion-avatar slot="start">
         <img [src]="user.picture.medium"/>
       </ion-avatar>
       <ion-label>
         <h2>{{user.name.first}} {{user.name.last}}</h2>
+        <p>Né(e) le {{user.dob.date | date:'dd/MM/yyyy'}}</p>
       </ion-label>
     </ion-item>
   </ion-list>
