@@ -50,10 +50,12 @@ export class ListPage implements OnInit {
       //on doit donc avoir 40 users dans this.users (concat...)
       //on doit appeler la méthode complete() du ion infinite pour "arrêter" le chargement
       //idéalement, on s'arrête quand on a 100 users (voir disabled du ion infinite)
-      console.log(users);
-
-
-
+      this.listUsers = this.listUsers.concat(users['results']);
+      event.target.complete();
+      if(this.page === 5) {
+        event.target.disabled = true;
+      }
+      console.log(this.listUsers);
     });
   }
 
