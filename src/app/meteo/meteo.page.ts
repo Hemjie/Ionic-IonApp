@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
+import { MeteoService } from '../services/meteo.service';
 
 @Component({
   selector: 'app-meteo',
@@ -8,18 +8,37 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['./meteo.page.scss'],
 })
 export class MeteoPage implements OnInit {
-  settings = null;
+  settingsM: any = {};
+  meteo: any = {}; //objet où on va stocker la météo de la ville choisie
 
   constructor(
-    private router: Router,
-    private storage: Storage
+    private storage: Storage,
+    private meteoService: MeteoService
   ) { }
 
   ngOnInit() {
   }
 
+  //settingsM, de la page météo
+  //settingsP, de la promesse
+  //settings, de la page settings et du storage
+
   ionViewWillEnter() {
-    this.storage.get('settings').then(settings => this.settings = settings);
+    // On récupère les settings définis auparavant dans le téléphone
+    this.storage.get('settings').then(settingsP => {
+      if (settingsP === null || !settingsP.city) {
+        // Ville par défaut si jamais il n'a pas fait ses réglages
+        this.settingsM.city = 'Paris';
+      } else {
+        //si on a bien des settings dans le phone, on les récupère
+        this.settingsM = settingsP;
+      }
+
+      // Ok, on a la ville. On peut chercher sa météo
+      this.meteoService.getMeteo(this.settingsM.city).then(meteoP => {
+        this.meteo = meteoP;
+      });
+    });
   }
 
 }

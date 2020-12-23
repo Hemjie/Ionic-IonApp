@@ -3,22 +3,22 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Meteo à {{ settings.city }}</ion-title>
+    <ion-title>Météo à {{ settingsM.city }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid>
+  <ion-grid *ngIf="meteo.current_condition">
     <ion-row>
       <ion-col size="6" offset="3" class="ion-text-center">
-        <h2>{{ settings.city }}</h2>
+        <h2>{{ settingsM.city }}</h2>
         <div>
           <img
-            src="https://www.prevision-meteo.ch/style/images/icon/ensoleille-big.png"
-            alt="{{ settings.city }}">
+            [src]="meteo.current_condition.icon_big" alt="settingsM.city">
         </div>
-        <h3>Description</h3>
-        <h4>10 &deg;C</h4>
+        <!-- ? permet d'éviter le ngIf -->
+        <h3>{{meteo.current_condition?.condition}}</h3>
+        <h4>{{meteo.current_condition.tmp}} °C</h4>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -26,28 +26,33 @@
         <ion-list>
           <ion-item>
             <ion-label>
-              <h2><strong>Pression</strong>: 1005</h2>
+              <h2><strong>Pression : </strong>{{meteo.current_condition.pressure}} hPa</h2>
             </ion-label>
           </ion-item>
           <ion-item>
             <ion-label>
-              <h2><strong>Humidité: </strong> 52 %</h2>
+              <h2><strong>Humidité : </strong> {{meteo.current_condition.humidity}} %</h2>
             </ion-label>
           </ion-item>
           <ion-item>
             <ion-label>
-              <h2><strong>Lever du soleil: </strong> 08:03</h2>
+              <h2><strong>Lever du soleil : </strong>{{meteo.city_info?.sunrise}} </h2>
             </ion-label>
           </ion-item>
           <ion-item>
             <ion-label>
-              <h2><strong>Coucher du soleil: </strong> 18:03</h2>
+              <h2><strong>Coucher du soleil: </strong> {{meteo.city_info?.sunset}}</h2>
             </ion-label>
           </ion-item>
           <ion-item>
             <ion-label>
-              <h2><strong>Coordonnées: </strong> 50.49, 2.81</h2>
+              <h2><strong>Latitude: </strong>{{meteo.city_info?.latitude}}</h2>
             </ion-label>
+          </ion-item>
+          <ion-item>
+              <ion-label>
+                <h2><strong>Longitude: </strong>{{meteo.city_info?.longitude}}</h2>
+              </ion-label>
           </ion-item>
         </ion-list>
       </ion-col>

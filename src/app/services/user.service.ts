@@ -19,4 +19,5 @@ export class UserService {
     //on aura 20 résultats par page
     return this.http.get('https://randomuser.me/api/?results=20&page='+page+'&seed=m2i').toPromise();
   }
+
 }
