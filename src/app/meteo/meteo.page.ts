@@ -8,6 +8,8 @@ import { MeteoService } from '../services/meteo.service';
   styleUrls: ['./meteo.page.scss'],
 })
 export class MeteoPage implements OnInit {
+  lat: number;
+  long: number;
   settingsM: any = {};
   meteo: any = {}; //objet où on va stocker la météo de la ville choisie
 
@@ -37,6 +39,12 @@ export class MeteoPage implements OnInit {
       // Ok, on a la ville. On peut chercher sa météo
       this.meteoService.getMeteo(this.settingsM.city).then(meteoP => {
         this.meteo = meteoP;
+
+        this.lat = (this.meteo.city_info.latitude * 100);
+        this.lat = Math.round(this.lat) /100;
+
+        this.long = (this.meteo.city_info.longitude * 100);
+        this.long = Math.round(this.long) /100;
       });
     });
   }
