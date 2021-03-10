@@ -1,4 +1,4 @@
 # Ionic-IonApp
 Découverte du framework Ionic avec Angular
 
-![ionic-ionapp](/maquettes/maquette-ionapp.png)
+![ionic-ionapp](/maquette-ionapp.png)
